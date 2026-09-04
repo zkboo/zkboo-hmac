@@ -1,6 +1,6 @@
 [package]
 name = "zkboo-hmac"
-version = "1.0.0"
+version = "1.2.0"
 edition = "2024"
 description = "HMAC primitives for the ZKBoo ecosystem."
 license = "LGPL-3.0-or-later"
@@ -10,11 +10,11 @@ keywords = ["zk", "zero-knowledge", "zkboo"]
 categories = ["cryptography", "no-std"]
 
 [dependencies]
-zkboo = { version = "1.0.0", features = ["u32"] }
+zkboo = { version = "1.2.0", features = ["u32"] }
 
 [dev-dependencies]
-zkboo = { version = "1.0.0", features = ["parallel"] }
-zkboo-sha2 = { version = "1.0.0", features = ["sha256", "sha512"] }
+zkboo = { version = "1.2.0", features = ["parallel"] }
+zkboo-sha2 = { version = "1.2.0", features = ["sha256", "sha512"] }
 hex = "0.4.3"
 blake3 = "1.8.3"
 zeroize = { version = "1.8.2", default-features = false, features = [
