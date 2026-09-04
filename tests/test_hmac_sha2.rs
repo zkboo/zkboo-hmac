@@ -15,6 +15,7 @@ use zkboo_hmac::hmac;
 use zkboo_sha2::{
     SHA256_BLOCKSIZE, SHA512_BLOCKSIZE, sha224bytes, sha256bytes, sha384bytes, sha512bytes,
 };
+use zkboo::executor::ExecOptions;
 
 trait HMACCircuit: Circuit {
     fn with_be_bytes_output(key: Vec<u8>, msg: Vec<u8>) -> Self;
@@ -81,7 +82,7 @@ fn run_hmac_test<C: HMACCircuit + Sync>(test_vectors: &[(&[u8], &[u8], &[u8])]) 
         let msg = msg.to_vec();
         let expected = expected.to_vec();
         let circuit = C::with_be_bytes_output(key.clone(), msg.clone());
-        let output = exec::<_, WP>(&circuit)
+        let output = exec::<_, WP, _>(&circuit, ExecOptions::new())
             .u8
             .into_iter()
             .take(expected.len())
